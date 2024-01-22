@@ -9,7 +9,7 @@
  *
  */
 
-void lomuto_partition(int *array, size_t size, int left, int right)
+int lomuto_partition(int *array, size_t size, int left, int right)
 {
 	int *pivot = array + right;
 	int high, low, tmp;
@@ -37,8 +37,26 @@ void lomuto_partition(int *array, size_t size, int left, int right)
 
 		print_array(array, size);
 	}
-	lomuto_partition(array, size, left, high - 1);
-	lomuto_partition(array, size, high + 1, right);
+	return (high);
+}
+
+/**
+ * _sort -
+ * @array:the array to be partitioned
+ * @size: the size of the array
+ * @left: the left boundry of the array being partitioned
+ * @right: the right boundry of the array being patitioned
+ */
+void _sort(int *array, size_t size, int left, int right)
+{
+	int part;
+
+	if (right - left > 0)
+	{
+		part = lomuto_partition(array, size, left, right);
+		_sort(array, size, left, part - 1);
+		_sort(array, size, part + 1, right);
+	}
 }
 
 /**
@@ -52,5 +70,5 @@ void quick_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	lomuto_partition(array, size, 0, size - 1);
+	_sort(array, size, 0, size - 1);
 }
