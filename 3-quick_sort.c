@@ -6,7 +6,7 @@
  * @size: the size of the array
  * @left: the left boundry of the array being partitioned
  * @right: the right boundry of the array being patitioned
- *
+ * Return: the final right index of the partition
  */
 
 int lomuto_partition(int *array, size_t size, int left, int right)
@@ -41,7 +41,7 @@ int lomuto_partition(int *array, size_t size, int left, int right)
 }
 
 /**
- * _sort -
+ * _sort - implements the sort algorithm
  * @array:the array to be partitioned
  * @size: the size of the array
  * @left: the left boundry of the array being partitioned
